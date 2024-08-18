@@ -23,7 +23,8 @@ from langchain.agents import AgentExecutor, create_react_agent
 from langchain.tools import BaseTool, StructuredTool, tool
 from langchain_core.prompts import PromptTemplate
 from langchain_core.callbacks import StdOutCallbackHandler
-from src.neo4j_functions import ClientError
+from neo4j.exceptions import ClientError
+
 
 # https://medium.com/@pierre.oberholzer/iso-20022-a-ready-to-use-knowledge-graph-9a7955f8ea7b
 # From https://github.com/langchain-ai/langchain/blob/master/templates/neo4j-cypher/neo4j_cypher/chain.py
@@ -83,7 +84,6 @@ class AdvancedRAGChain:
                 "CREATE FULLTEXT INDEX entity IF NOT EXISTS FOR (e:__Entity__) ON EACH [e.id]")
         except ClientError:
             pass
-
 
         result = ""
         entity_chain = self.create_entity_extraction_chain()
@@ -237,6 +237,7 @@ def multi_hop_qa_agent(current_user):
 
     class SearchInput(BaseModel):
         question: str = Field(description="should be a question to search for in the database")
+
     @tool("search_tool", args_schema=SearchInput, return_direct=False)
     def search(question: str) -> str:  # not async
         """Look up things in database."""

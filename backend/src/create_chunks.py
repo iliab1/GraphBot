@@ -1,7 +1,7 @@
 from src.validation.source_node import SourceNode
 import hashlib
 from langchain_text_splitters import TokenTextSplitter
-from src.neo4j_functions import ClientError
+from neo4j.exceptions import ClientError
 from config.logging_config import logger
 from tqdm import tqdm
 
