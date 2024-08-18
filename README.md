@@ -9,7 +9,9 @@ Transform unstructured PDF documents into insightful knowledge graphs.
 ![Docker](https://img.shields.io/badge/Docker-blue)
 
 ## Overview
-GraphBot is a powerful tool that converts unstructured PDF documents into insightful knowledge graphs. By leveraging advanced graph processing and natural language processing (NLP) techniques, GraphBot enables users to extract meaningful insights, perform complex multi-hop reasoning, and interact with the knowledge graph through intuitive queries.
+
+GraphBot is a powerful tool that converts unstructured PDF documents into insightful knowledge graphs 
+and allows users to interact with the graph through a chat interface.
 
 ## Key Features
 - **📊 Knowledge Graphs:**  
