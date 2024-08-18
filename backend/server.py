@@ -140,10 +140,13 @@ async def create_upload_file(
         current_source_node = await asyncio.to_thread(extract_graph_from_local_file, file_path,
                                                       current_user)  # Provide file_path as argument
         logger.info(f"Graph extracted for {current_source_node.file_name}")
+        file_path.unlink()  # Remove the file after processing to save space
         return create_api_response(status="success",
                                    message=f"Successfully processed file: {current_source_node.file_name}")
+
     except Exception as e:
         logger.error(f"Error processing file: {e}")
+        file_path.unlink()  # Remove the file
         return create_api_response(status="error", message=f"Error processing file {str(e)}", error=str(e))
 
 
