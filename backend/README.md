@@ -1,0 +1,1 @@
+This is the backend of the application, built using FastAPI and integrated with Langchain.
