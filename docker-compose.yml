@@ -29,7 +29,7 @@ services:
     build:
       context: ./backend
     environment:
-      - LANGCHAIN_TRACING_V2=${LANGCHAIN_TRACING_V2-}
+      - LANGCHAIN_TRACING_V2=${LANGCHAIN_TRACING_V2-false}
       - LANGCHAIN_API_KEY=${LANGCHAIN_API_KEY-}
       - LANGCHAIN_PROJECT=${LANGCHAIN_PROJECT-GraphBot}
     networks:
