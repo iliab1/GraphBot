@@ -1,0 +1,58 @@
+services:
+
+# Optional, you can also connect to a remote Neo4j instance
+  neo4j:
+    image: neo4j:5
+    ports:
+      - 7687:7687
+      - 7474:7474
+    volumes:
+      - ${PWD:-.}/neo4j/data:/data
+      #- ${PWD:-.}/neo4j/logs:/logs
+      #- ${PWD:-.}/neo4j/conf:/conf
+    environment:
+      - NEO4J_AUTH=${NEO4J_USERNAME-neo4j}/${NEO4J_PASSWORD-pleaseletmein}
+      - NEO4J_PLUGINS=["apoc"]
+      - NEO4J_db_tx__log_rotation_retention__policy=false
+    healthcheck:
+        test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider localhost:7474 || exit 1"]
+        interval: 5s
+        timeout: 3s
+        retries: 5
+    networks:
+      - net
+    profiles:
+      - local_neo4j
+
+# Backend service
+  backend:
+    build:
+      context: ./backend
+    environment:
+      - LANGCHAIN_TRACING_V2=${LANGCHAIN_TRACING_V2-}
+      - LANGCHAIN_API_KEY=${LANGCHAIN_API_KEY-}
+      - LANGCHAIN_PROJECT=${LANGCHAIN_PROJECT-GraphBot}
+    networks:
+      - net
+    x-develop:
+      watch:
+        - action: rebuild
+          path: ./backend
+    ports:
+      - 8080:8080
+
+# Frontend service
+  frontend:
+    build:
+      context: ./frontend
+    networks:
+      - net
+    x-develop:
+      watch:
+        - action: rebuild
+          path: ./frontend
+    ports:
+      - 8501:8501
+
+networks:
+    net:

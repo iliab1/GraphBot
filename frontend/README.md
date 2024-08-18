@@ -1,0 +1,1 @@
+This is a front end of the application which is running Streamlit

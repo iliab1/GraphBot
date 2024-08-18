@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["iliab <ilia.bukin1@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["all"], version = "^0.111.0"}
+langchain-core = "^0.2.6"
+langchain = "^0.2.6"
+langchain-experimental = "^0.0.62"
+langchain-openai = "^0.1.11"
+pypdf = "^4.2.0"
+pydantic = "^2.7.4"
+aiofiles = "^24.1.0"
+neo4j = "^5.22.0"
+langserve = {extras = ["server"], version = "^0.2.2"}
+graphdatascience = "^1.10"
+langchainhub = "^0.1.20"
+jupyter = "^1.0.0"
+llama-index-core = "^0.10.57"
+llama-index = "^0.10.57"
+llama-index-graph-stores-neo4j = "^0.2.8"
+llama-index-vector-stores-neo4jvector = "^0.1.6"
+matplotlib = "^3.9.1"
+pyvis = "^0.3.2"
+ragas = "^0.1.13" #  Avoid using the RAGAS, as it has no implementation of Langchain in it.
+xmltodict = "^0.13.0"
+wikipedia = "^1.4.0"
+seaborn = "^0.13.2"
+
+[tool.poetry.group.dev.dependencies]
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

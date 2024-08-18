@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "frontend"
+version = "0.1.0"
+description = ""
+authors = ["iliab <ilia.bukin1@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+langserve = {extras = ["client"], version = "^0.2.2"}
+streamlit = "^1.36.0"
+streamlit-aggrid = "^1.0.5"
+langchain-community = "^0.2.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
