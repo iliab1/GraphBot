@@ -1,2 +1,5 @@
 /backend/poetry.lock
 /frontend/poetry.lock
+/neo4j/
+.ipynb_checkpoints/
+.idea/
