@@ -70,7 +70,7 @@ For more complex multi-hop reasoning, use the `🧠 Agent` tab.
 ### 1. Clone the Repository
 First, clone the GraphBot repository to your local machine:
 ```bash
-git clone https://github.com/yourusername/graphbot.git
+git clone https://github.com/iliab1/GraphBot
 cd graphbot
 ```
 ### 2. Build the Application
